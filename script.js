@@ -42,7 +42,7 @@ document.getElementById('loanForm').addEventListener('submit', async function(ev
 
 function handleFormReset() {
     document.getElementById('loanForm').reset(); // Reset form fields
-    document.getElementById('monthlyPayment').textContent = '$0.00'; // Reset the result display
+    document.getElementById('monthlyPayment').textContent = '€0.00'; // Reset the result display
 
     // Change button text back to "Calculate"
     const button = document.querySelector('button');
