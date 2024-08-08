@@ -1,34 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Loan Calculator</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        td.error {
+            color: #d9534f;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background: #f5f5f5;
+            color: #000000;
+        }
+    </style>
 </head>
-<body>
+<body style="margin-top: 100px; margin-bottom: 100px;">
     <div class="container">
-        <h1>Student Loan Calculator</h1>
-        <form id="loanForm">
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" min="18" max="30" required>
-            
-            <label for="loan_amount">Loan Amount:</label>
-            <input type="number" id="loan_amount" name="loan_amount" min="1000" max="500000" step="0.01" required>
-            
-            <label for="years_to_repay">Years to Repay:</label>
-            <input type="number" id="years_to_repay" name="years_to_repay" min="1" max="20" required>
-            
-            <label for="interest_rate">Interest Rate (%):</label>
-            <input type="number" id="interest_rate" name="interest_rate" min="0" max="10" step="0.01" value="5.0">
-            
-            <button type="submit">Calculate</button>
-        </form>
-        <div id="result">
-            <h2>Monthly Payment: <span id="monthlyPayment">$0.00</span></h2>
+        <div style="display: flex;">
+            <img src="assets\motop.png" style="width: 100px; height: 70px; align-self:center;">
+            <h1  style="padding: 3%;">
+                Student Loan Repayment Calculator
+            </h1>
         </div>
+
+        <section>
+            <h2>Introduction</h2>
+            <h4 style="background-color: rgba(196, 196, 196, 0.247); padding: 10px;">FastAPI</h4>
+            <p><strong>Purpose:</strong> FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints. It is designed to create RESTful APIs quickly and efficiently.</p>
+            <p><strong>Main Functions:</strong></p>
+            <ul>
+                <li>Build APIs using Python type hints and automatic data validation.</li>
+                <li>Generate interactive API documentation (Swagger UI and ReDoc).</li>
+                <li>Handle asynchronous requests to improve performance.</li>
+            </ul>
+    
+            <h4 style="background-color: rgba(196, 196, 196, 0.247); padding: 10px;">Frontend (Static Site)</h4>
+            <p><strong>Purpose:</strong> A static site that provides a user interface for interacting with the FastAPI backend. The frontend collects input from users and displays the calculated loan repayment results.</p>
+            <p><strong>Main Functions:</strong></p>
+            <ul>
+                <li>Collect user inputs for loan calculation.</li>
+                <li>Send data to the FastAPI backend.</li>
+                <li>Display results and handle user interactions.</li>
+            </ul>
+        </section>
+
+
     </div>
+
+    <div>
+        <img src="assets\all.png" style="width: 450px;" alt="Tools">
+    </div>
+
+    <div class="container">
+
+
+        <section>
+            <h2 style="background-color: rgba(196, 196, 196, 0.247); padding: 10px;">The Test Plan</h2>
+            <h3></h3>
+            <p ><strong>Inputs to the FastAPI Backend:</strong></p>
+            <ul>
+                <li><strong>age:</strong> Integer, represents the age of the applicant.</li>
+                <li><strong>loan_amount:</strong> Decimal, represents the total amount of the loan.</li>
+                <li><strong>years_to_repay:</strong> Integer, represents the number of years over which the loan will be repaid.</li>
+                <li><strong>interest_rate:</strong> Decimal, represents the annual interest rate of the loan.</li>
+            </ul>
+
+            <h3 style="background-color: rgba(196, 196, 196, 0.247); padding: 10px;">Acceptable and Unacceptable Values</h3>
+            <p><strong>age:</strong></p>
+            <ul>
+                <li><strong>Acceptable:</strong> Integer values between 18 and 30 (inclusive).</li>
+                <li><strong>Not Acceptable:</strong> Values less than 18, greater than 30, non-integer values.</li>
+            </ul>
+
+            <p><strong>loan_amount:</strong></p>
+            <ul>
+                <li><strong>Acceptable:</strong> Decimal values between 1000 and 500000 (inclusive).</li>
+                <li><strong>Not Acceptable:</strong> Values less than 1000, greater than 500000, negative values, non-numeric values.</li>
+            </ul>
+
+            <p><strong>years_to_repay:</strong></p>
+            <ul>
+                <li><strong>Acceptable:</strong> Integer values between 1 and 20 (inclusive).</li>
+                <li><strong>Not Acceptable:</strong> Values less than 1, greater than 20, non-integer values.</li>
+            </ul>
+
+            <p><strong>interest_rate:</strong></p>
+            <ul>
+                <li><strong>Acceptable:</strong> Decimal values between 0 and 10 (inclusive).</li>
+                <li><strong>Not Acceptable:</strong> Values less than 0, greater than 10, negative values, non-numeric values.</li>
+            </ul>
+        </section>
+
+    </div>
+
+
+    <div  class="container">
+        
+        <section>
+            <h2 style="margin-top: 80px;">API endpoint test</h2>
+            <p>Below is a preview of the backend application for the Student Loan Repayment Calculator:</p>
+            <iframe src="https://fastapi-example-4k64.onrender.com/docs" title="Student Loan Repayment Calculator"></iframe>
+        </section>
+
+        <section>
+            <h2 style="margin-top: 80px;"><a href="https://www.postman.com/hanigraph/workspace/student-loan-payments/request/36988932-62b12cfb-5d1a-4122-8a29-00fb981c0609?action=share&creator=36988932&ctx=documentation">POSTMAN</a> endpoint test</h2>
+        </section>
+
+        <img src="assets\postman_01.png" style="width:100%"    alt="Tools">
+
+    </div>
+
+
+
+    <div  class="container">
+        <div>
+            <h1>Student Loan Calculator</h1>
+            <form id="loanForm">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="30" required>
+                
+                <label for="loan_amount">Loan Amount:</label>
+                <input type="number" id="loan_amount" name="loan_amount" min="1000" max="500000" step="0.01" required>
+                
+                <label for="years_to_repay">Years to Repay:</label>
+                <input type="number" id="years_to_repay" name="years_to_repay" min="1" max="20" required>
+                
+                <label for="interest_rate">Interest Rate (%):</label>
+                <input type="number" id="interest_rate" name="interest_rate" min="0" max="10" step="0.01" value="5.0">
+                
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result">
+                <h2>Monthly Payment: <span id="monthlyPayment">$0.00</span></h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div  class="container">
+        <section>
+            <h2>Test Cases</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case ID</th>
+                        <th>Age</th>
+                        <th>Loan Amount</th>
+                        <th>Years to Repay</th>
+                        <th>Interest Rate</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC01</td>
+                        <td>25</td>
+                        <td>5000</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td>Valid request; should return monthly payment.</td>
+                    </tr>
+                    <tr>
+                        <td>TC02</td>
+                        <td>17</td>
+                        <td>5000</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Age less than 18.</td>
+                    </tr>
+                    <tr>
+                        <td>TC03</td>
+                        <td>35</td>
+                        <td>5000</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Age greater than 30.</td>
+                    </tr>
+                    <tr>
+                        <td>TC04</td>
+                        <td>25</td>
+                        <td>999</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Loan amount less than 1000.</td>
+                    </tr>
+                    <tr>
+                        <td>TC05</td>
+                        <td>25</td>
+                        <td>500001</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Loan amount greater than 500000.</td>
+                    </tr>
+                    <tr>
+                        <td>TC06</td>
+                        <td>25</td>
+                        <td>-1000</td>
+                        <td>5</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Loan amount is negative.</td>
+                    </tr>
+                    <tr>
+                        <td>TC07</td>
+                        <td>25</td>
+                        <td>5000</td>
+                        <td>0</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Years to repay less than 1.</td>
+                    </tr>
+                    <tr>
+                        <td>TC08</td>
+                        <td>25</td>
+                        <td>5000</td>
+                        <td>25</td>
+                        <td>5.0</td>
+                        <td class="error">Error: Years to repay greater than 20.</td>
+                    </tr>
+                    <tr>
+                        <td>TC09</td>
+                        <td>25</td>
+                        <td>5000</td>
+                        <td>5</td>
+                        <td>-1.0</td>
+                        <td class="error">Error: Interest rate less than 0.</td>
+                    </tr>
+                    <tr>
+                        <td>TC10</td>
+                        <td>25</td>
+                        <td>5000</td>
+                        <td>5</td>
+                        <td>15.0</td>
+                        <td class="error">Error: Interest rate greater than 10.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <div  class="container">
+        <section>
+            <h2>Conclusion</h2>
+            <p>In this project, we developed a loan repayment calculator using FastAPI for the backend and a static frontend for user interaction. The FastAPI framework was chosen for its speed, modern features, and ease of use in creating RESTful APIs. The frontend allows users to input loan details and receive calculated monthly payments.</p>
+            <p><strong>Testing</strong> was crucial to ensure that the API correctly handles a variety of inputs, including edge cases and invalid data. The test cases cover a range of scenarios to ensure robustness and validate that the application correctly processes valid inputs while handling errors gracefully.</p>
+            <p>By following this test plan and analyzing the results, we ensure that the application is reliable and meets the specified requirements, providing a seamless user experience for loan calculations.</p>
+        </section>
+    </div>
+    <div  class="container">
+        <footer class="footer">
+            <p>&copy; 2024 Student Loan Repayment Calculator Project</p>
+        </footer>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
