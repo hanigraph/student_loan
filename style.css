@@ -1,16 +1,18 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
+    gap: 30px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     background-color: #f4f4f9;
 }
 
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
