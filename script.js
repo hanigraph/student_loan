@@ -9,7 +9,7 @@ document.getElementById('loanForm').addEventListener('submit', async function(ev
     const button = document.querySelector('button');
     
     try {
-        const response = await fetch('http://127.0.0.1:8000/calculate_loan/', {
+        const response = await fetch('https://fastapi-example-4k64.onrender.com/calculate_loan/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
